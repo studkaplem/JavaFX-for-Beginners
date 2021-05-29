@@ -22,3 +22,10 @@ Cursor.H_RESIZE
 Cursor.V_RESIZE
 Cursor.MOVE
 Cursor.TEXT
+
+The JavaFX Node class, javafx.scene.Node, is the base class (superclass) for all
+components added to the JavaFX Scene Graph. The JavaFX Node class is abstract,
+so you will only add subclasses of the Node class to the scene graph. All JavaFX Node instances
+in the scene graph share a set of common properties which are defined by the JavaFX Node class.
+These common properties will be covered in this JavaFX Node tutorial.
+Each JavaFX Node (subclass) instance can only be added to the JavaFX scene graph once
