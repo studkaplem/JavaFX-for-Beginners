@@ -7,6 +7,7 @@ import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.VPos;
 import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -17,6 +18,11 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontSmoothingType;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.scene.transform.Scale;
 import javafx.stage.Stage;
 
@@ -29,36 +35,27 @@ public class Launcher extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-        Pane pane = new Pane();
-
-        ReadOnlyDoubleProperty widthProperty = pane.widthProperty();
-        widthProperty.addListener( new ChangeListener<Number>(){
-            @Override
-            public void changed(
-                    ObservableValue<? extends Number> observableValue,
-                    Number oldVal, Number newVal) {
-
-                System.out.println("widthProperty changed from "
-                        + oldVal.doubleValue() + " to " + newVal.doubleValue());
-            }
-        });
+        Text text = new Text("This is a JavaFX text\n" +
+                "This is a longer JavaFX text.");
+        text.setWrappingWidth(180);
+        text.setFont(Font.font("Arial Black", FontWeight.LIGHT, 16));
+        text.setFill(Color.DARKBLUE);
+        text.setStroke(Color.RED);
+        text.setTextOrigin(VPos.BOTTOM);
+        text.setUnderline(true);
+        text.setFontSmoothingType(FontSmoothingType.LCD);
 
 
-        DoubleProperty prefWidthProperty = pane.prefWidthProperty();
-        prefWidthProperty.addListener(
-                (ObservableValue<? extends Number> prop,
-                 Number oldVal, Number newVal) -> {
+        Text text1 = new Text();
+        text1.setText("another JavaFX text");
+        text1.setFont(Font.font("Arial",FontWeight.LIGHT, 15));
+        text1.setFill(Color.GREEN);
+        text1.setStrikethrough(true);
+        text.setFontSmoothingType(FontSmoothingType.GRAY);
 
-                    System.out.println("prefWidthProperty changed from "
-                            + oldVal.doubleValue() + " to " + newVal.doubleValue());
-                });
 
-        prefWidthProperty.set(123);
-
-        Scene scene = new Scene(pane, 1024, 800, true);
+        Scene scene = new Scene(new VBox(text, text1), 200, 250);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("2D Example");
-
         primaryStage.show();
     }
 

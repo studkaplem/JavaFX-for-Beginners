@@ -29,3 +29,8 @@ so you will only add subclasses of the Node class to the scene graph. All JavaFX
 in the scene graph share a set of common properties which are defined by the JavaFX Node class.
 These common properties will be covered in this JavaFX Node tutorial.
 Each JavaFX Node (subclass) instance can only be added to the JavaFX scene graph once
+
+The JavaFX Text control can display a text inside a JavaFX GUI. The JavaFX Text control
+is represented by the JavaFX class javafx.scene.text.Text .
+You can set the font to be used by the Text control text size, font decorations and many other things.
+
